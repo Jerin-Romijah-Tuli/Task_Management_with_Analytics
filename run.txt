@@ -1,0 +1,42 @@
+.\env\Scripts\Activate.ps1
+
+# for creating project
+django-admin startproject mysite .
+
+# for creating app
+django-admin startapp users
+
+# runserver
+python manage.py runserver
+
+# after changing anything in db
+python manage.py makemigrations
+python manage.py migrate
+
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+python manage.py runscript send_task_reminders
+python manage.py runserver
+
+
+python manage.py makemigrations tasks
+python manage.py migrate
+
+
+python manage.py createsuperuser
+2003056@student.ruet.ac.bd
+
+
+celery -A taskmanager worker -l info
+celery -A taskmanager beat -l info
+
+python manage.py shell
+
+celery -A taskmanager worker --loglevel=info -P eventlet
+celery -A taskmanager beat --loglevel=info
+
+python manage.py runjobs minutely
+
+python manage.py runscript send_task_reminders

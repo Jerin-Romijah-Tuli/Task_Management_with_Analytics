@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+          
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative; /* To allow absolute positioning of the quote */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2em;
+            padding: 13px;
+            background: rgb(182, 146, 194);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo img {
+            height: 50px;
+            height:60px;
+            width:60px;
+            border-radius: 50%;
+            margin:5px;
+           
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container for the form */
+        .container {
+            top:90px;
+            width: 600px;
+            padding: 20px;
+            background-image: url("{% static 'users/registration.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            position: relative;
+           
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 80px auto 60px auto; /* Add margin to ensure space above the footer *
+            background-color: rgba(255, 255, 255, 0.8); /* Slight white overlay for readability */
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+            
+           
+             /* Form content above the background image */
+        }
+
+        .container input {
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: rgba(0, 0, 0, 0.2); /* Slight transparency */
+        }
+
+        .container button, .container input[type="submit"] {
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover, .container input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .container p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .container p a {
+            color: red;
+            font-style: italic;
+            text-decoration: none;
+        }
+
+        /* Quote styling */
+        .quote {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 25px;
+            color: green;
+            font-style: italic;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 4px green;
+        }
+
+        .logo{
+            height:60px;
+            width:60px;
+            border-radius: 50%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgb(182, 146, 194);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 20px; /* Set footer height */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{% static 'users/logo.png' %}" alt="Logo">
+        </div>
+        <div>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+        </div>
+    </nav>
+    <div class="container">
+        <form id="register-form" method="POST">
+            {% csrf_token %}
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="text" id="address" name="address" placeholder="Address" required>
+            <input type="text" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required>
+            <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="username" name="username" placeholder="UserName" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Submit">
+        </form>
+        <p>Already have an account?<br><a href="/login">Login</a></p>
+        <p><a href="/">Back to Home</a></p>
+    </div>
+    <!-- Add the quote here -->
+    <div class="quote">
+        "The secret of getting ahead... <br>is getting started."<br> – Mark Twain
+    </div>
+
+    <footer>
+        Task Manager &copy; 2024
+    </footer>
+</body>
+</html>

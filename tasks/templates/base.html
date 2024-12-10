@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        /* General */
+        body {
+            font-family: 'Roboto', sans-serif;
+           
+            margin: 0;
+            padding: 0;
+            color: rgb(105, 79, 142);
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(182, 146, 194);
+            padding: 25px 30px;
+            color: white;
+            border-bottom: 2px solid rgb(227, 165, 199);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            background: rgb(227, 165, 199);
+        }
+
+        .btn-add-task {
+            background: rgb(119, 72, 152);
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-add-task:hover {
+            background: rgb(0, 168, 181);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .dropbtn {
+            background: rgb(0, 168, 181);
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .dropdown .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(251, 185, 1);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content select,
+        .dropdown-content input[type="date"],
+        .dropdown-content button {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid rgb(119, 72, 152);
+        }
+
+        .dropdown-content button {
+            background: rgb(0, 168, 181);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .dropdown-content button:hover {
+            background: rgb(119, 72, 152);
+        }
+
+        /* Task Cards */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            
+        }
+
+        .task-card {
+            background: rgb(230, 42, 118);
+            color: rgb(0, 168, 181);
+            border: 1px solid rgb(182, 146, 194);
+            padding: 25px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 250px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .task-actions a,
+        .task-actions button {
+            margin-top: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-edit {
+            background-color: rgb(119, 72, 152);
+        }
+
+        .btn-delete {
+            background-color: rgb(0, 168, 181);
+        }
+
+        .btn-complete {
+            background-color: rgb(251, 185, 1);
+        }
+
+        .btn-complete:hover,
+        .btn-edit:hover,
+        .btn-delete:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer (Optional) */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgb(182, 146, 194);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Task Manager</div>
+        <ul>
+            
+            <li><a href="/">Home</a></li>
+            <li><a href="/login/">Login</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Filters</a>
+                <div class="dropdown-content">
+                    <form method="GET" action="{% url 'task_list' %}">
+                        <div>
+                            <label for="status">Status:</label>
+                            <select name="status" id="status">
+                                <option value="">All</option>
+                                
+                                <option value="pending">Pending</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="priority">Priority:</label>
+                            <select name="priority" id="priority">
+                                <option value="">All</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="due_date">Due Date:</label>
+                            <input type="date" name="due_date" id="due_date">
+                        </div>
+                        <button type="submit">Filter</button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <a href="{% url 'task_create' %}" class="btn-add-task">+ Add Task</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer (Optional) -->
+    <footer>
+        Task Manager &copy; 2024
+    </footer>
+</body>
+</html>

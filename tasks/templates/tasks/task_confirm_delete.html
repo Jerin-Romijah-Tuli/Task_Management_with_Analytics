@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center; color: #ff6b6b;">Are you sure?</h2>
+<p style="text-align: center;">You are about to delete the task "{{ task.title }}".</p>
+<form method="post" style="text-align: center;">
+    {% csrf_token %}
+    <button style="padding: 10px 20px; background: #ff6b6b; border: none; border-radius: 4px; cursor: pointer;">Yes, delete</button>
+    <a href="{% url 'task_list' %}" style="padding: 10px 20px; background: #f6b93b; border: none; border-radius: 4px; text-decoration: none; color: #fff; margin-left: 10px;">Cancel</a>
+</form>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container form {
+        display: flex;
+        flex-direction: column;
+    }
+    .container input,
+    .container select {
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .container button {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .container p {
+        text-align: center;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}

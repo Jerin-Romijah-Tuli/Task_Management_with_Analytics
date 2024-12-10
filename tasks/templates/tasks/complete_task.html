@@ -1,0 +1,44 @@
+<!-- tasks/templates/tasks/complete_task.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Complete Task</h2>
+<p>Did you complete the task "{{ task.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" name="yes">Yes</button>
+    <button type="submit" name="no">No</button>
+</form>
+{% endblock %}
+{% extends 'my_app/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Task Details</h2>
+        <div class="task-card">
+            <h3>{{ task.title }}</h3>
+            <p>Status: <strong>{{ task.status }}</strong></p>
+            <p>Due Date: {{ task.due_date }}</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <p>Do you want to mark this task as completed?</p>
+                <button type="submit" name="yes">Yes</button>
+                <button type="submit" name="no">No</button>
+            </form>
+        </div>
+    </div>
+    <style>
+        .task-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            background: #fefefe;
+        }
+        .task-card h3 {
+            color: #2c3e50;
+        }
+    </style>
+{% endblock %}

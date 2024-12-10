@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgb(182, 146, 194);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo img {
+            height: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: rgb(182, 146, 194);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .panda-face {
+            position: relative;
+            margin: auto;
+            height: 150px;
+            width: 160px;
+            background: white;
+            border-radius: 80px 80px 60px 60px;
+            border: 4px solid #333;
+        }
+
+        .ear-l,
+        .ear-r {
+            position: absolute;
+            background: #333;
+            height: 50px;
+            width: 60px;
+            border-radius: 50%;
+        }
+
+        .ear-l {
+            top: -40px;
+            left: -20px;
+        }
+
+        .ear-r {
+            top: -40px;
+            right: -20px;
+        }
+
+        .eye-l,
+        .eye-r {
+            position: absolute;
+            background: #333;
+            height: 40px;
+            width: 35px;
+            border-radius: 50%;
+        }
+
+        .eye-l {
+            top: 50px;
+            left: 30px;
+        }
+
+        .eye-r {
+            top: 50px;
+            right: 30px;
+        }
+
+        .eyeball-l,
+        .eyeball-r {
+            position: absolute;
+            background: white;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+        }
+
+        .nose {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 20px;
+            width: 20px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        .links {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgb(182, 146, 194);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Set footer height */
+        }
+
+       
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="">
+            <img class="logo" src="{% static 'users/logo.png' %}" alt="Logo">
+        </div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="panda-face">
+            <div class="ear-l"></div>
+            <div class="ear-r"></div>
+            <div class="eye-l">
+                <div class="eyeball-l"></div>
+            </div>
+            <div class="eye-r">
+                <div class="eyeball-r"></div>
+            </div>
+            <div class="nose"></div>
+        </div>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <p><a href="/register">Don't have an account? Register</a></p>
+            <p><a href="/password-reset">Forgot Password?</a></p>
+        </div>
+    </div>
+
+  
+    <script>
+        // Panda animation logic
+        let usernameRef = document.querySelector("input[name='username']");
+        let passwordRef = document.querySelector("input[name='password']");
+        let eyeL = document.querySelector(".eyeball-l");
+        let eyeR = document.querySelector(".eyeball-r");
+
+        let normalEyeStyle = () => {
+            eyeL.style.cssText = `top: 10px; left: 10px;`;
+            eyeR.style.cssText = `top: 10px; left: 10px;`;
+        };
+
+        usernameRef.addEventListener("focus", () => {
+            eyeL.style.cssText = `top: 0; left: 20px;`;
+            eyeR.style.cssText = `top: 0; left: 20px;`;
+        });
+
+        passwordRef.addEventListener("focus", () => {
+            eyeL.style.cssText = `top: 20px; left: 0px;`;
+            eyeR.style.cssText = `top: 20px; left: 0px;`;
+        });
+
+        document.addEventListener("click", (e) => {
+            if (e.target !== usernameRef && e.target !== passwordRef) {
+                normalEyeStyle();
+            }
+        });
+    </script>
+    <footer>
+        Task Manager &copy; 2024
+    </footer>
+</body>
+</html>
