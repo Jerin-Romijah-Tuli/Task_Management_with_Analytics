@@ -153,7 +153,11 @@ Project/
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is owned solely by **Jerin Romijah Tuli**.  
+You are not permitted to copy, modify, or distribute this project without the explicit permission of the owner.  
+
+All rights reserved © **Jerin Romijah Tuli**
+
 
 ---
 
@@ -162,4 +166,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - **Django Framework**: [https://www.djangoproject.com/](https://www.djangoproject.com/)
 - **Celery**: [https://docs.celeryproject.org/](https://docs.celeryproject.org/)
 - **Chart.js**: Used for task analytics visualization.
+
+ 
+
 
