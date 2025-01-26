@@ -5,7 +5,7 @@
 This is a **Task Manager Application** built using the Django framework. The application helps users manage their tasks efficiently by providing features like task creation, updates, filtering, notifications, and analytics.
 
 ---
-
+![Image](https://github.com/user-attachments/assets/3a77b412-24cd-4416-bc18-f6dfdeb3ba20)
 
 ## Features
 
