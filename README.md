@@ -14,7 +14,7 @@ This is a **Task Manager Application** built using the Django framework. The app
    - Users can register and log in securely with hashed passwords managed by Django's built-in authentication system.
    - Each user has a separate profile, ensuring data privacy and personalized experiences.
 
-
+![Image](https://github.com/user-attachments/assets/9162d704-fe6e-4927-a88f-ed342bd3d911)
 
 1. **Task Management**:
 
