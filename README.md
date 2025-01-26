@@ -17,7 +17,7 @@ This is a **Task Manager Application** built using the Django framework. The app
 
 
 
-1. **Task Management**:
+2. **Task Management**:
 
    - **Create Tasks**: Add new tasks with titles, descriptions, due dates, and priorities.
    - **Update Tasks**: Modify existing tasks to reflect changes in status, priority, or details.
@@ -28,7 +28,7 @@ This is a **Task Manager Application** built using the Django framework. The app
 
 ![Image](https://github.com/user-attachments/assets/bc845c7a-4751-48e8-80ce-b0cf85de6dd6)
 
-1. **Analytics and Visualization**:
+3. **Analytics and Visualization**:
 
    - **Pie Chart Representation**: Visualize the ratio of completed vs. pending tasks, giving an instant snapshot of productivity.
    - **Efficiency Calculation**: Measure efficiency as a percentage based on completed tasks versus total tasks.
@@ -36,7 +36,7 @@ This is a **Task Manager Application** built using the Django framework. The app
 ![Image](https://github.com/user-attachments/assets/3a77b412-24cd-4416-bc18-f6dfdeb3ba20)
 
 
-1. **Notifications**:
+4. **Notifications**:
 
    - **Email Alerts**: Receive automatic email notifications for overdue tasks, ensuring nothing is missed.
    - **Background Scheduler**: A Celery-based periodic task scheduler runs every 10 minutes to check for overdue tasks and send notifications.
@@ -44,7 +44,7 @@ This is a **Task Manager Application** built using the Django framework. The app
 ![Image](https://github.com/user-attachments/assets/d051a5b8-23b2-4595-9c7f-5d0337d78ec1)
 
 
-1. **Advanced Features** (Planned):
+5. **Advanced Features** (Planned):
 
    - **Kanban Boards**: Intuitive drag-and-drop task management for enhanced workflow visualization.
    - **Calendar Integration**: Sync tasks with a calendar to stay on top of deadlines.
