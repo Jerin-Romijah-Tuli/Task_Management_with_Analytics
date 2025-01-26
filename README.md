@@ -6,6 +6,7 @@ This is a **Task Manager Application** built using the Django framework. The app
 
 ---
 
+
 ## Features
 
 1. **User Authentication**:
